@@ -42,10 +42,16 @@ import { promises } from "dns";
 
 // check image url exsits
 export async function imageUrlExsits(image_url:string){
+  var regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
     return new Promise((resolve) => {
-        const img = new Image();
-        img.src = image_url;
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-      });
+      // check url valid
+      if(!regex.test(image_url)){
+        resolve(false);
+      }
+      // check img url not found
+      const img = new Image();
+      img.src = image_url;
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+    });
 }
