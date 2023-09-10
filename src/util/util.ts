@@ -1,6 +1,7 @@
 import fs from "fs";
 import Jimp from "jimp";
 import {Image} from "canvas"
+import { promises } from "dns";
 
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally
@@ -9,7 +10,7 @@ import {Image} from "canvas"
 //    inputURL: string - a publicly accessible url to an image file
 // RETURNS
 //    an absolute path to a filtered image locally saved file
- export async function filterImageFromURL(inputURL) {
+ export async function filterImageFromURL(inputURL): Promise<string> {
   return new Promise(async (resolve, reject) => {
     try {
       const photo = await Jimp.read(inputURL);
