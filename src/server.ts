@@ -30,7 +30,7 @@ import { HTPP_STATUS , RESPONSE_MSG} from './util/constant';
 
     /**************************************************************************** */
     app.get("/filteredimage", async (req, res) => {
-        const image_url = req.query.image_url;
+        const image_url:string = req.query.image_url.toString();
         if (!image_url) {
           res.status(HTPP_STATUS.BAD_REQUEST).send(RESPONSE_MSG.IMAGE_URL_REQUIRED);
         }
