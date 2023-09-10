@@ -10,7 +10,7 @@ import { promises } from "dns";
 //    inputURL: string - a publicly accessible url to an image file
 // RETURNS
 //    an absolute path to a filtered image locally saved file
- export async function filterImageFromURL(inputURL): Promise<string> {
+ export async function filterImageFromURL(inputURL:string): Promise<string> {
   return new Promise(async (resolve, reject) => {
     try {
       const photo = await Jimp.read(inputURL);
@@ -34,14 +34,14 @@ import { promises } from "dns";
 // useful to cleanup after tasks
 // INPUTS
 //    files: Array<string> an array of absolute paths to files
- export async function deleteLocalFiles(files) {
+ export async function deleteLocalFiles(files:Array<string>) {
   for (let file of files) {
     fs.unlinkSync(file);
   }
 }
 
 // check image url exsits
-export async function imageUrlExsits(image_url){
+export async function imageUrlExsits(image_url:string){
     return new Promise((resolve) => {
         const img = new Image();
         img.src = image_url;
