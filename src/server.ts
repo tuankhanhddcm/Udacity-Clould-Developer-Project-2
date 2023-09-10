@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { filterImageFromURL,deleteLocalFiles, imageUrlExsits } from './util/util.js';
-import { HTPP_STATUS , RESPONSE_MSG} from './util/constant.js';
+import { filterImageFromURL,deleteLocalFiles, imageUrlExsits } from './util/util';
+import { HTPP_STATUS , RESPONSE_MSG} from './util/constant';
 
 
 

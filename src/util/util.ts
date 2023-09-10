@@ -1,6 +1,6 @@
 import fs from "fs";
 import Jimp from "jimp";
-import {Image} from "canvas";
+import {Image} from "canvas"
 
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally
