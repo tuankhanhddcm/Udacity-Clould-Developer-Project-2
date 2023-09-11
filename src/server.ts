@@ -30,7 +30,7 @@ import { HTPP_STATUS , RESPONSE_MSG} from './util/constant';
 
     /**************************************************************************** */
     app.get("/filteredimage", async (req, res) => {
-        const image_url:string = req.query.image_url.toString();
+        const image_url:any = req.query.image_url;
         if (!image_url) {
           res.status(HTPP_STATUS.BAD_REQUEST).send(RESPONSE_MSG.IMAGE_URL_REQUIRED);
         }
@@ -38,7 +38,7 @@ import { HTPP_STATUS , RESPONSE_MSG} from './util/constant';
           res.status(HTPP_STATUS.BAD_REQUEST).send(RESPONSE_MSG.IMAGE_URL_INVALID);
         } 
         else {
-          const filteredpath = await filterImageFromURL(image_url.toString());
+          const filteredpath = await filterImageFromURL(image_url);
           res.status(HTPP_STATUS.SUCCESS).sendFile(filteredpath, () => {
             deleteLocalFiles([filteredpath]);
           });
