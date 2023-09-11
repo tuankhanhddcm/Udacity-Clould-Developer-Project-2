@@ -1,7 +1,5 @@
 import fs from "fs";
 import Jimp from "jimp";
-import {Image} from "canvas"
-import { promises } from "dns";
 
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally
@@ -49,9 +47,10 @@ export async function imageUrlExsits(image_url:string){
         resolve(false);
       }
       // check img url not found
-      const img = new Image();
-      img.src = image_url;
-      img.onload = () => resolve(true);
-      img.onerror = () => resolve(false);
+      var XMLHttpRequest = require('xhr2');
+      const xhr = new XMLHttpRequest();
+      xhr.open('HEAD', image_url, true);
+      xhr.send();
+      xhr.onload =() => resolve(xhr.status === 200)
     });
 }
